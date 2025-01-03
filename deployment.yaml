@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: basic-api
+  template:
+    metadata:
+      labels:
+        app: basic-api
+    spec:
+      containers:
+      - name: basic-api
+        image: <your-dockerhub-username>/basic-api:latest
+        ports:
+        - containerPort: 5000
