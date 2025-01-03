@@ -33,68 +33,110 @@ kubectl config use-context minikube
 
 ### Step by Step
 
-1. Fork this repository.
+1. **Fork this repository.**
 
-2. At the repository root, build and push the Docker image:
+2. **At the repository root, build and push the Docker image:**
 ```shell
 docker login -u <your-dockerhub-username> -p <your-dockerhub-pass-or-access-token>
 docker build -t <your-dockerhub-username>/basic-api:latest .
 docker push <your-dockerhub-username>/basic-api:latest
 ```
 
-3. Set `<your-dockerhub-username>` in the deployment.yaml file.
+3. **Set `<your-dockerhub-username>` in the deployment.yaml file.**
 
-4. Apply the Deployment:
+4. **Apply the Deployment:**
 ```shell
 kubectl apply -f deployment.yaml
 ```
 
-5. Apply the Service: 
+5. **Apply the Service:**
 ```shell
 kubectl apply -f service.yaml
 ```
 
-6. Check the status of the pods:
+6. **Check the status of the pods:**
 ```shell
 kubectl get pods
 ```
+The output should look like this:
+```shell
+kubectl get pods
+NAME                         READY   STATUS    RESTARTS   AGE
+basic-api-7867dfb5fb-xxxxx   1/1     Running   0          17s
+basic-api-7867dfb5fb-yyyyy   1/1     Running   0          17s
+```
 
-7. Describe a specific pod (replace <pod-name> with the name of one of the pods):
+7. **Describe a specific pod (replace <pod-name> with the name of one of the pods):**
 ```shell
 kubectl describe pod <pod-name>
 ```
 
-8. View the logs of a pod: 
+8. **View the logs of a pod:**
 ```shell
 kubectl logs <pod-name>
 ```
+The output should look like this:
+```shell
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.244.0.4:5000
+Press CTRL+C to quit
+```
 
-9. Access the application locally using port-forwarding:
+9. **Access the application locally using port-forwarding:**
 ```shell
 kubectl port-forward service/basic-api-service 8080:80
 ```
+The output should look like this:
+```shell
+Forwarding from 127.0.0.1:8080 -> 5000
+Forwarding from [::1]:8080 -> 5000
+```
 
-10. Open your browser and navigate to http://localhost:8080
+10. **Open your browser and navigate to [http://localhost:8080](http://localhost:8080)**
 _You should see the message: `{"message": "Hello, Kubernetes!"}`._
 
-11. Scale the deployment to 4 replicas: 
+11. **Scale the deployment to 4 replicas:** 
 ```shell
 kubectl scale deployment basic-api --replicas=4
 ```
+The output should look like this:
+```shell
+deployment.apps/basic-api scaled
+```
 
-12. Verify the new number of pods: 
+12. **Verify the new number of pods:**
 ```shell
 kubectl get pods
 ```
+The output should look like this:
+```shell
+NAME                         READY   STATUS    RESTARTS   AGE
+basic-api-7867dfb5fb-xxxxx   1/1     Running   0          28s
+basic-api-7867dfb5fb-yyyyy   1/1     Running   0          5m39s
+basic-api-7867dfb5fb-aaaaa   1/1     Running   0          5m39s
+basic-api-7867dfb5fb-bbbbb   1/1     Running   0          28s
+```
 
-13. Delete the Deployment:
+13. **Delete the Deployment:**
 ```shell
 kubectl delete -f deployment.yaml
 ```
+The output should look like this:
+```shell
+deployment.apps "basic-api" deleted
+```
 
-14. Delete the Service: 
+14. **Delete the Service:** 
 ```shell
 kubectl delete -f service.yaml
+```
+The output should look like this:
+```shell
+service "basic-api-service" deleted
 ```
 
 ## Summary
