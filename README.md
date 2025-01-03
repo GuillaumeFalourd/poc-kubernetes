@@ -23,30 +23,60 @@ docker build -t <your-dockerhub-username>/basic-api:latest .
 docker push <your-dockerhub-username>/basic-api:latest
 ```
 
-3. Set <your-dockerhub-username> in the deployment.yaml file.
+3. Set `<your-dockerhub-username>` in the deployment.yaml file.
 
-4. Apply the Deployment: `kubectl apply -f deployment.yaml`.
+4. Apply the Deployment:
+```shell
+kubectl apply -f deployment.yaml
+```
 
-5. Apply the Service: `kubectl apply -f service.yaml`.
+5. Apply the Service: 
+```shell
+kubectl apply -f service.yaml
+```
 
-6. Check the status of the pods: `kubectl get pods`.
+6. Check the status of the pods:
+```shell
+kubectl get pods
+```
 
-7. Describe a specific pod (replace <pod-name> with the name of one of the pods): `kubectl describe pod <pod-name>`.
+7. Describe a specific pod (replace <pod-name> with the name of one of the pods):
+```shell
+kubectl describe pod <pod-name>
+```
 
-8. View the logs of a pod: `kubectl logs <pod-name>`.
+8. View the logs of a pod: 
+```shell
+kubectl logs <pod-name>
+```
 
-9. Access the application locally using port-forwarding: `kubectl port-forward service/basic-api-service 8080:80`.
+9. Access the application locally using port-forwarding:
+```shell
+kubectl port-forward service/basic-api-service 8080:80
+```
 
 10. Open your browser and navigate to http://localhost:8080
 _You should see the message: `{"message": "Hello, Kubernetes!"}`._
 
-11. Scale the deployment to 4 replicas: `kubectl scale deployment basic-api --replicas=4`.
+11. Scale the deployment to 4 replicas: 
+```shell
+kubectl scale deployment basic-api --replicas=4
+```
 
-12. Verify the new number of pods: `kubectl get pods`.
+12. Verify the new number of pods: 
+```shell
+kubectl get pods
+```
 
-13. Delete the Deployment: `kubectl delete -f deployment.yaml`
+13. Delete the Deployment:
+```shell
+kubectl delete -f deployment.yaml
+```
 
-14. Delete the Service: `kubectl delete -f service.yaml`.
+14. Delete the Service: 
+```shell
+kubectl delete -f service.yaml
+```
 
 ## Summary
 
