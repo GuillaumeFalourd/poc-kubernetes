@@ -9,8 +9,27 @@ Proof of concept using kubernetes
 ### Prerequisites
 
 1. A Kubernetes cluster is up and running (e.g., Minikube, Kind, or a managed Kubernetes service like GKE, EKS, or AKS).
+
+For Minikube (Ubuntu):
+```shell
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+minikube start
+minikube status
+```
+
 2. kubectl is installed and configured to interact with your cluster.
-3. Docker is installed to build the API image (optional if using a pre-built image).
+
+With Minikube (Ubuntu):
+```shell
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+kubectl version --client
+kubectl config use-context minikube
+```
+
+3. [Docker is installed](https://docs.docker.com/engine/install/ubuntu/) to build the API image (optional if using a pre-built image).
 
 ### Step by Step
 
