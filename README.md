@@ -97,9 +97,11 @@ Forwarding from [::1]:8080 -> 5000
 ```
 
 10. **Open your browser and navigate to [http://localhost:8080](http://localhost:8080)**
-_You should see the message: `{"message": "Hello, Kubernetes!"}`._
+_You should see the message: `{"message": "Hello, Kubernetes!"}` as below:_
 
-11. **Scale the deployment to 4 replicas:** 
+![](https://github.com/user-attachments/assets/945da275-af92-40ef-bd33-e1f632d68a29)
+
+12. **Scale the deployment to 4 replicas:** 
 ```shell
 kubectl scale deployment basic-api --replicas=4
 ```
