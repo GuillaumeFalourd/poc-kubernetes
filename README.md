@@ -8,7 +8,7 @@ Proof of concept using kubernetes
 
 ### Prerequisites
 
-1. A Kubernetes cluster is up and running (e.g., Minikube, Kind, or a managed Kubernetes service like GKE, EKS, or AKS).
+1. **A Kubernetes cluster is up and running** (e.g., Minikube, Kind, or a managed Kubernetes service like GKE, EKS, or AKS).
 
 For Minikube (Ubuntu):
 ```shell
@@ -18,7 +18,7 @@ minikube start
 minikube status
 ```
 
-2. kubectl is installed and configured to interact with your cluster.
+2. **kubectl is installed and configured to interact with your cluster.**
 
 With Minikube (Ubuntu):
 ```shell
@@ -29,7 +29,7 @@ kubectl version --client
 kubectl config use-context minikube
 ```
 
-3. [Docker is installed](https://docs.docker.com/engine/install/ubuntu/) to build the API image (optional if using a pre-built image).
+3. **[Docker is installed](https://docs.docker.com/engine/install/ubuntu/) to build the API image**.
 
 ### Step by Step
 
@@ -97,6 +97,7 @@ Forwarding from [::1]:8080 -> 5000
 ```
 
 10. **Open your browser and navigate to [http://localhost:8080](http://localhost:8080)**
+
 _You should see the message: `{"message": "Hello, Kubernetes!"}` as below:_
 
 ![](https://github.com/user-attachments/assets/945da275-af92-40ef-bd33-e1f632d68a29)
